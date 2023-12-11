@@ -161,7 +161,7 @@ app.post ('/process_login', function(request,response) {
                 temp_user['name'] = user_data[entered_email].name;
 
                 let params = new URLSearchParams (temp_user);
-                response.redirect(`/invoice,html?valid&${params.toString()}`);
+                response.redirect(`/invoice.html?valid&${params.toString()}`);
                 return;
             } else if (entered_password ==0) {
                 request.query.loginErr = 'Password field can not be blank';
