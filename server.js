@@ -102,7 +102,7 @@ for (let i in products) {
 
 //stores inputs temp to be sent ahead
 let temp_user={};
-S
+
 // Process purchase requests
 app.post("/process_purchase", function (request, response) {
     let POST = request.body;
