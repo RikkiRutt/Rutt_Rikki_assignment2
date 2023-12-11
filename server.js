@@ -95,10 +95,10 @@ if (fs.existsSync(filename)) {
 }
 
 
-// Initialize quantity sold for each product
+/* Initialize quantity sold for each product
 for (let i in products) {
     products[i].qty_sold = 0; // Corrected this line
-}
+}*/
 
 // Process purchase requests
 app.post("/process_purchase", function (request, response) {
