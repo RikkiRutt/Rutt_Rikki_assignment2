@@ -178,7 +178,7 @@ app.post ('/process_login', function(request,response) {
 
 app.post ('/continue_shopping', function(request,response) {
    let params = new URLSearchParams(temp_user) ;
-   response.redirect(`/products.html?${params.toString()}`);
+   response.redirect(`/product_display.html?${params.toString()}`);
 })
 
 
