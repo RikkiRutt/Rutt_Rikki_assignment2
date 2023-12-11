@@ -84,7 +84,7 @@ function checkQuantitiesOnServer(POST) {
 let user_data;
 
 const fs=require('fs');
-const filename= __dirname + 'user_data.json';
+const filename= __dirname + '/user_data.json';
 if (fs.existsSync(filename)) {
     let data=fs.readFileSync(filename, 'utf-8');
     user_data = JSON.parse(data);
