@@ -44,46 +44,63 @@
                 </div>
             </div>
         </header>
+        <br>
         <div class="container">
             <br>
-            <h1>Welcome please login to your account.</h1>
+            <br>
+            <h1>Welcome, please login to your account.</h1>
+            <br>
         
-        <form action="/process_login" method="POST" name="login_form" class="form-horizontal">
-            <table style="margin: auto;">
-                <tr style="height: 60px;">
-                    <td style="width: 30%; text-align: right; padding-right: 10px; font-weight: bold;">
-                        <label>Email</label>
-                    </td>
-                    <td style="width: 40%;">
-                        <input class="input" type="text" name="email" id="email" size="40" maxlength="40" placeholder="Enter email" autocomplete="off">
-                    </td>
-                    <td style="width: 30%;">
-                    </td>
-                </tr>
-            <tr style="height: 60px;">
-                <td style="width: 30%; text-align: right; padding-right: 10px;">
-                    <label>Password</label>
-                </td>
-                <td style="width: 40%;" style="line-height: 70%;">
-                    <input class="input" type="password" name="password" id="password" size="40" maxlength="40" placeholder="Enter password" autocomplete="off">
-                </td>
-            </tr>
-            <tr style="height: 50px;">
-                <td colspan="3" id="errMsg" style="color: #EB0A1E"></td>
-            </tr>
-            <tr style="height: 60px;">
-                <td colspan="3">
-                    <input class="sm-button highlight" type="submit" value="Login">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">Don't have a account with us yet? <a href="/register.html" class="link" style="text-decoration: underline;">Register here!</a></td>
-            </tr>
-            </table>
-        </form>
+            <form action="/process_login" method="POST" name="login_form" class="form-horizontal">
+                <table style="margin: auto;">
+                    <tr style="height: 60px;">
+                        <td style="width: 30%; text-align: right; padding-right: 10px; font-weight: bold;">
+                            <label>Email</label>
+                        </td>
+                        <td style="width: 40%;">
+                            <input class="input" type="text" name="email" id="email" size="40" maxlength="40" placeholder="Enter email" autocomplete="off">
+                        </td>
+                        <td style="width: 30%;"></td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td style="width: 30%; text-align: right; padding-right: 10px;">
+                            <label>Password</label>
+                        </td>
+                        <td style="width: 40%;">
+                            <input class="input" type="password" name="password" id="password" size="40" maxlength="40" placeholder="Enter password" autocomplete="off">
+                            <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
+                        </td>
+                        <td style="width: 30%;"></td>
+                    </tr>
+                    <tr style="height: 50px;">
+                        <td colspan="3" id="errMsg" style="color: #EB0A1E"></td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td colspan="3">
+                            <input class="sm-button highlight" type="submit" value="Login">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center; font-size: larger;">Don't have an account with us yet? <a href="/register.html" class="link" style="text-decoration: underline;">Register here!</a></td>
+                    </tr>
+                </table>
+            </form>
+        <!--Script to toggle vis of password (used skynet to get code)-->
+            <script>
+                function togglePasswordVisibility() {
+                    var passwordInput = document.getElementById("password");
+                    passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
+                }
+            </script>
+        </div>
+        
+        </div>
+        
     </div>
         <br>
         <br>
+        <!-- JS file for login-->
+        <script src="./login.js"></script>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rikki Rutt 2023</p></div>
