@@ -176,10 +176,10 @@ app.post ('/process_login', function(request,response) {
         response.redirect(`login.html?${params.toString()}`);
 });
 
-app.post ('./continue_shopping'), function(request,response) {
+app.post ('/continue_shopping', function(request,response) {
    let params = new URLSearchParams(temp_user) ;
    response.redirect(`/products.html?${params.toString()}`);
-}
+})
 
 
 // Start the server; listen on port 8080 for incoming HTTP requests
