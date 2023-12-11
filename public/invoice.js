@@ -15,7 +15,7 @@ window.onload = function() {
             </body>
         `)
     } else {
-        document.getElementById('helloMsg').innerHTML = `Thank you ${params.get('name')}, we appreciate your business!`
+        document.getElementById('helloMsg').innerHTML = `Thank you ${params.get('name')}, we appreciate your business!`;
     }
 }
 //Initialize the subtotal to zero
