@@ -195,7 +195,7 @@ app.post ('/purchase_logout', function(request, response) {
         }
     });
 
-    response.redirect('/products.html');
+    response.redirect('/product_display.html');
 })
 
 
