@@ -44,8 +44,9 @@
                 </div>
             </div>
         </header>
+        <br>
 <div class="container">
-    <h1>Please Register a new account.</h1>
+    <h1 style="text-align: center;">Please Register a new account.</h1>
     <form action="/process_register" method="POST" name="register_form">
         <table style="margin: auto;">
             <tr style="height: 60px;" class="form-group">
@@ -82,19 +83,21 @@
         <tr class="errpr_tr">
             <td colspan="3" id="confirm_password_error" style="color: #EB0A1E;"></td>
         </tr>
-
         <tr style="height: 60px;">
             <td colspan="3">
                 <input class="sm-button highlight" type="submit" value="Register">
             </td>
         </tr>
         <tr>
-            <!--redir to login-->
-            <td colspan="3">Have an existing account? <a herf="/login.html" class="link" style="text-decoration: underline;"></a></td>
+            <!-- Redirect to login -->
+            <td colspan="3" style="text-align: center;">
+                Have an existing account? <a href="/login.html" class="link" style="text-decoration: underline;">Login here</a>
+            </td>
         </tr>
         </table>
     </form>
 </div>
+<br>
 <script src="./register.js"></script>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
