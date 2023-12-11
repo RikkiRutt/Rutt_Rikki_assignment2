@@ -183,8 +183,8 @@ app.post ('/continue_shopping', function(request,response) {
 
 app.post ('/purchase_logout', function(request, response) {
     for (let i in products) {
-        products[i].qty_sold += Number(qty);
-        products[i].qty_available -= Number(qty);
+        products[i].qty_sold += Number(temp_user[`qty${i}`]);
+        products[i].qty_available -= Number(temp_user[`qty${i}`]);
     }
 
     fs.writeFile(__dirname+'products.json', JSON.stringify(products), 'utf-8'), (err) => {
