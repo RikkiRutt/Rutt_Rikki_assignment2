@@ -101,8 +101,8 @@ for (let i in products) {
 }*/
 
 //stores inputs temp to be sent ahead
-let temp_user;
-
+let temp_user={};
+S
 // Process purchase requests
 app.post("/process_purchase", function (request, response) {
     let POST = request.body;
@@ -130,7 +130,7 @@ app.post("/process_purchase", function (request, response) {
         if (isValidPurchase) {
             // Update product quantities and broadcast changes
             for (let i in products) {
-                temp_user = POST[`qty${i}`];
+                temp_user[`qty${i}`]= POST[`qty${i}`];
 
                 //adjusted for after purchase on invoice
                 /*products[i].qty_sold += Number(qty);
