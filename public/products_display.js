@@ -63,6 +63,12 @@ window.onload = function () {
             }
         }
     }
+    if (params.has('name')) {
+        document.getElementById('helloMsg').innerHTML = `Thank You ${name} we appreciate your business!`;
+        for (let i in products) {
+            qty_form[`qty${i}`].value = params.get(`qty${i}`);
+        }
+    }
 };
 
 // Add this line to create a WebSocket connection
