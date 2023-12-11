@@ -173,7 +173,7 @@ app.post ('/process_login', function(request,response) {
         }
         request.query.email = entered_email;
         let params = new URLSearchParams (request.query);
-        response.redirect(`login.html?${params.toString}`);
+        response.redirect(`login.html?${params.toString()}`);
 });
 
 
