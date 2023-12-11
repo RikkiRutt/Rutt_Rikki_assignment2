@@ -195,6 +195,10 @@ app.post ('/purchase_logout', function(request, response) {
         }
     });
 
+//removing user login from temp
+delete temp_user['email'];
+delete temp_user['name'];
+
     response.redirect('/product_display.html');
 })
 
