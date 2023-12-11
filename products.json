@@ -3,36 +3,42 @@
 		"model": "Oil Filter",
 		"price": 7.99,
 		"image": "./Images/Oil filter.jpg",
-		"qty_available": 20
+		"qty_available": 100,
+		"qty_sold": 0
 	},
 	{
 		"model": "Front Brake Pads",
 		"price": 109.99,
 		"image": "./Images/Brake Pads.jpg",
-		"qty_available": 10
+		"qty_available": 100,
+		"qty_sold": 0
 	},
     {
 		"model": "Front Brake Rotors",
 		"price": 98.00,
 		"image": "./Images/Brake Rotor.jpg",
-		"qty_available": 5
+		"qty_available": 100,
+		"qty_sold": 0
 	},
 	{
 		"model": "Outer Tie Rod Ends",
 		"price": 75.99,
 		"image": "./Images/Tie rod end.jpg",
-		"qty_available": 3
+		"qty_available": 100,
+		"qty_sold": 0
 	},
     {
 		"model": "Upper Ball Joints",
 		"price": 85.55,
 		"image": "./Images/Ball Joint.jpg",
-		"qty_available": 7
+		"qty_available": 100,
+		"qty_sold": 0
 	},
 	{
 		"model": "Front Struts",
 		"price": 178.99,
 		"image": "./Images/Strut.jpg",
-		"qty_available": 5
+		"qty_available": 100,
+		"qty_sold": 0
 	}
 ]
