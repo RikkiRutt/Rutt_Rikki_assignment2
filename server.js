@@ -187,7 +187,7 @@ app.post ('/purchase_logout', function(request, response) {
         products[i].qty_available -= Number(temp_user[`qty${i}`]);
     }
 
-    fs.writeFile(__dirname+'products.json', JSON.stringify(products), 'utf-8', (err) => {
+    fs.writeFile(__dirname+'/products.json', JSON.stringify(products), 'utf-8', (err) => {
         if (err) {
             console.error('Error updating products data',err);
         } else {
