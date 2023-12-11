@@ -14,6 +14,8 @@ window.onload = function() {
                 <h4>Return to <a href="index.html">Home</a></h4> 
             </body>
         `)
+    } else {
+        document.getElementById('helloMsg').innerHTML = `Thank you ${params.get('name')}, we appreciate your business!`
     }
 }
 //Initialize the subtotal to zero
