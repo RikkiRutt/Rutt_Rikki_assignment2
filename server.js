@@ -48,6 +48,53 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+// Function to validate quantity entered by user against available quantity
+function validateQuantity(quantity, availableQuantity) {
+    let errors = [];
+
+    quantity = Number(quantity);
+
+    if (isNaN(quantity) && quantity !== '') {
+        errors.push("Not a number. Please enter a non-negative quantity to order.");
+    } else if (quantity < 0 && !Number.isInteger(quantity)) {
+        errors.push("Negative quantity and not an Integer. Please enter a non-negative quantity to order.");
+    } else if (quantity < 0) {
+        errors.push("Negative quantity. Please enter a non-negative quantity to order.");
+    } else if (quantity !== 0 && !Number.isInteger(quantity)) {
+        errors.push("Not an Integer. Please enter a non-negative quantity to order.");
+    } else if (quantity > availableQuantity) {
+        errors.push(`We do not have ${quantity} available.`);
+    }
+
+    return errors;
+}
+
+// Function to check quantities against the server's current state
+function checkQuantitiesOnServer(POST) {
+    for (let i in products) {
+        let qty = POST[`qty${i}`];
+        if (Number(qty) > products[i].qty_available) {
+            return false; // Return false if any quantity is no longer available on the server
+        }
+    }
+    return true; // Return true if all quantities are valid
+}
+
+//addtions for a2
+let user_data;
+
+const fs=require('fs');
+const filename= __dirname + 'user_data.json';
+if (fs.existsSync(filename)) {
+    let data=fs.readFileSync(filename, 'utf-8');
+    user_data = JSON.parse(data);
+    console.log(user_data);
+} else {
+    console.log(`${filename} does not exist.`);
+    user_data = {};
+}
+
+
 // Initialize quantity sold for each product
 for (let i in products) {
     products[i].qty_sold = 0; // Corrected this line
@@ -95,37 +142,7 @@ app.post("/process_purchase", function (request, response) {
     }
 });
 
-// Function to validate quantity entered by user against available quantity
-function validateQuantity(quantity, availableQuantity) {
-    let errors = [];
 
-    quantity = Number(quantity);
-
-    if (isNaN(quantity) && quantity !== '') {
-        errors.push("Not a number. Please enter a non-negative quantity to order.");
-    } else if (quantity < 0 && !Number.isInteger(quantity)) {
-        errors.push("Negative quantity and not an Integer. Please enter a non-negative quantity to order.");
-    } else if (quantity < 0) {
-        errors.push("Negative quantity. Please enter a non-negative quantity to order.");
-    } else if (quantity !== 0 && !Number.isInteger(quantity)) {
-        errors.push("Not an Integer. Please enter a non-negative quantity to order.");
-    } else if (quantity > availableQuantity) {
-        errors.push(`We do not have ${quantity} available.`);
-    }
-
-    return errors;
-}
-
-// Function to check quantities against the server's current state
-function checkQuantitiesOnServer(POST) {
-    for (let i in products) {
-        let qty = POST[`qty${i}`];
-        if (Number(qty) > products[i].qty_available) {
-            return false; // Return false if any quantity is no longer available on the server
-        }
-    }
-    return true; // Return true if all quantities are valid
-}
 
 // Start the server; listen on port 8080 for incoming HTTP requests
 server.listen(8080, () => console.log(`listening on port 8080`));
