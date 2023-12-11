@@ -100,6 +100,9 @@ for (let i in products) {
     products[i].qty_sold = 0; // Corrected this line
 }*/
 
+//stores inputs temp to be sent ahead
+let temp_user;
+
 // Process purchase requests
 app.post("/process_purchase", function (request, response) {
     let POST = request.body;
@@ -108,7 +111,7 @@ app.post("/process_purchase", function (request, response) {
 
     // Iterate through products to validate quantities
     for (let i in products) {
-        let qty = POST[`qty${i}`]; // Corrected this line
+        let qty = POST[`qty${i}`]; 
         hasQty = hasQty || (qty > 0);
         let errorMessages = validateQuantity(qty, products[i].qty_available);
 
@@ -127,12 +130,15 @@ app.post("/process_purchase", function (request, response) {
         if (isValidPurchase) {
             // Update product quantities and broadcast changes
             for (let i in products) {
-                let qty = POST[`qty${i}`];
-                products[i].qty_sold += Number(qty);
-                products[i].qty_available -= Number(qty); // Corrected this line
+                temp_user = POST[`qty${i}`];
+
+                //adjusted for after purchase on invoice
+                /*products[i].qty_sold += Number(qty);
+                products[i].qty_available -= Number(qty);*/ 
             }
             wss.broadcast(JSON.stringify(products));
-            response.redirect("./invoice.html?valid&" + qs.stringify(POST));
+            let params = new URLSearchParams(temp_user);
+            response.redirect(`./login.html& + ${params.toString()}`);
         } else {
             // Redirect with an error message if quantities are no longer available on the server
             response.redirect("./product_display.html?unavailable");
