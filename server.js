@@ -194,6 +194,8 @@ app.post ('/purchase_logout', function(request, response) {
             console.log('Products data has been updated')
         }
     });
+
+    response.redirect('/products.html');
 })
 
 
