@@ -138,7 +138,7 @@ app.post("/process_purchase", function (request, response) {
             }
             wss.broadcast(JSON.stringify(products));
             let params = new URLSearchParams(temp_user);
-            response.redirect(`./login.html& + ${params.toString()}`);
+            response.redirect(`./login.html? + ${params.toString()}`);
         } else {
             // Redirect with an error message if quantities are no longer available on the server
             response.redirect("./product_display.html?unavailable");
