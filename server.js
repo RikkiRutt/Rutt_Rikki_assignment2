@@ -148,6 +148,25 @@ app.post("/process_purchase", function (request, response) {
     }
 });
 
+app.post ('/process_login', function(request,response) {
+    let POST = request.body;
+    let entered_email = POST['email'].toLowerCase();
+    let entered_password = POST['password'];
+
+    if (entered_email.length == 0 && entered_password == 0) {
+        request.query.loginErr = 'Both email adreess and password are required.'
+        } else if (user_data[entered_email]) {
+            if (user_data[entered_email].password ==  entered_password) {
+                temp_user['email'] = entered_email
+                temp_user['name'] = user_data[entered_email].name;
+
+                let params = new URLSearchParams (temp_user);
+                response.redirect(`/invoice,html?valid&${params.toString()}`);
+                return;
+            }
+        }
+});
+
 
 
 // Start the server; listen on port 8080 for incoming HTTP requests
