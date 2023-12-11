@@ -181,6 +181,21 @@ app.post ('/continue_shopping', function(request,response) {
    response.redirect(`/product_display.html?${params.toString()}`);
 })
 
+app.post ('/purchase_logout', function(request, response) {
+    for (let i in products) {
+        products[i].qty_sold += Number(qty);
+        products[i].qty_available -= Number(qty);
+    }
+
+    fs.writeFile(__dirname+'products.json', JSON.stringify(products), 'utf-8'), (err) => {
+        if (err) {
+            console.error('Error updating products data');
+        } else {
+            console.log('Products data has been updated')
+        }
+    }
+})
+
 
 // Start the server; listen on port 8080 for incoming HTTP requests
 server.listen(8080, () => console.log(`listening on port 8080`));
