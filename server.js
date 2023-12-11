@@ -163,7 +163,13 @@ app.post ('/process_login', function(request,response) {
                 let params = new URLSearchParams (temp_user);
                 response.redirect(`/invoice,html?valid&${params.toString()}`);
                 return;
+            } else if (entered_password ==0) {
+                request.query.loginErr = 'Password field can not be blank';
+            } else {
+                request.query.loginErr = 'Incorrect password';
             }
+        } else {
+            request.query.loginErr = 'Invalid Email';
         }
 });
 
