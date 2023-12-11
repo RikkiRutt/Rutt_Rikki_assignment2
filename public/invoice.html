@@ -47,6 +47,9 @@
                 </div>
             </div>
         </header>
+        <br>
+        <h5 id="helloMsg" style = "color: #EB0A1E;"></h5>
+        <br>
        <div class="container">
         <br>
         <br>
@@ -64,6 +67,12 @@
             <tbody id="invoice_table"></tbody>
             <tbody id="total_display"></tbody>
         </table>
+        <div class="buttons-container">
+            <form name="invoice" method"POST">
+                <input class="sm-button-highlight" type="submit" value="Continue Shopping" name="continue" onclick="invoice.action='/continue_shopping'">
+                <input class="sm-button-highlight" type="submit" value="Complete Purchase" name="logout" onclick="invoice.action='/purchase_logout'">
+            </form>
+        </div>
        </div>
 
        <!--js file for invocie-->
