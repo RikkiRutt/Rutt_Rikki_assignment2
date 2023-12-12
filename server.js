@@ -254,6 +254,24 @@ app.post ('/process_register', function(request, response) {
 
 })
 
+function validateName(name) {
+    // Clear previous errors
+    delete registration_errors['name_type'];
+
+    // Check for minimum and maximum length
+    if (name.length < 2 || name.length > 30) {
+        registration_errors['name_type'] = 'Full name must be between 2 and 30 characters.';
+    }
+
+    // Check if only letters are used
+    if (!/^[A-Za-z]+$/.test(name)) {
+        registration_errors['name_type'] = 'Full name should only contain letters.';
+    }
+
+    // If there are no errors, the full name is valid
+    console.log(registration_errors);
+}
+
 function validatePassword(password) {
     // Clear previous errors
     delete registration_errors['password_type'];
