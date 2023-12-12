@@ -213,8 +213,11 @@ app.post('/process_register', function (request, response) {
     let reg_password = request.body.password;
     let reg_confirm_password = request.body.confirm_password;
 
+    //call name val func
     validateName(reg_name)
+    //call email val func
     validateEmail(reg_email)
+    //call pw val func
     validatePassword(reg_password)
     // matches pw and confrim pw
     validateConfirmPassword(reg_confirm_password, reg_password);
@@ -256,7 +259,6 @@ app.post('/process_register', function (request, response) {
     
 });
 
-
 function validateName(name) {
     // Clear previous errors
     delete registration_errors['name_type'];
@@ -275,6 +277,7 @@ function validateName(name) {
         registration_errors['name_type'] = 'Name is already in use.';
     }
 }
+
 function validateEmail(email) {
     // Clear previous errors
     delete registration_errors['email_type'];
