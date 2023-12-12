@@ -294,6 +294,16 @@ function validateEmail(email) {
 
     if (!emailRegex.test(email)) {
         registration_errors['email_type'] = 'Invalid email format.';
+    } else {
+        // Extract the domain from the email
+        const domain = email.split('@')[1];
+
+        // Check for a valid domain extension 
+        const validDomainExtensions = ['com', 'net', 'org', 'edu', 'gov', 'mil', 'int', 'biz', 'info', 'name', 'pro', 'museum', 'us', 'uk', 'ca', 'au', 'de', 'fr', 'jp', 'cn', 'in', 'br', 'mx', 'ru', 'za', 'app', 'blog', 'guru', 'tech', 'design', 'io', 'dev', 'online', 'store', 'xyz']; 
+
+        if (!validDomainExtensions.includes(domain.split('.')[1])) {
+            registration_errors['email_type'] = 'Invalid domain extension.';
+        }
     }
 
     // Convert the email to lowercase for case-insensitive comparison
@@ -307,6 +317,7 @@ function validateEmail(email) {
     // If there are no errors, the email is valid
     console.log(registration_errors);
 }
+
 
 
 function validatePassword(password) {
