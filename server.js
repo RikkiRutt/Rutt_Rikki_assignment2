@@ -243,6 +243,13 @@ app.post ('/process_register', function(request, response) {
             response.redirect(`/invoice.html?regSuccess&valid&${params.toString()}`);
             }
         });
+    } else //if err from vlad and stor in reg_err
+    {
+        delete request.body.password;
+        delete request.body.confirm_password;
+
+        let params = new URLSearchParams(request.body);
+        response.redirect(`/register.html?${params.toString()}&${qs.stringify(registration_errors)}`);
     }
 
 })
