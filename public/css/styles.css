@@ -10933,3 +10933,10 @@ th {
 #total_display tr:hover {
   background-color: #f2f2f2; /* Light background color on hover */
 }
+.space-after-checkbox {
+  margin-top: 30px; /* Adjust the value as needed */
+}
+.rounded-input {
+  border-radius: 50px; /* Adjust the value as needed for the desired level of rounding */
+}
+

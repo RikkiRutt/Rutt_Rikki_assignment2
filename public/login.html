@@ -45,38 +45,43 @@
             </div>
         </header>
         <br>
+          <!--Used chat to adjust style-->
         <div class="container">
             <br>
             <br>
             <h1 style="text-align: center;">Welcome, please login to your account.</h1>
             <br>
         
-            <form action="/process_login" method="POST" name="login_form" class="form-horizontal">
-                <table style="margin: auto;">
-                    <tr style="height: 60px;">
-                        <td style="width: 30%; text-align: right; padding-right: 10px; font-weight: bold;">
-                            <label>Email</label>
+
+            <form action="/process_login" method="POST" name="login_form" class="form-horizontal form-container">
+                <table class="form-table" style="margin: auto;">
+                    <tr class="form-row" style="text-align: center; margin-bottom: 10px;"> 
+                        <td class="label-cell" style="width: 30%; text-align: right; vertical-align: top; padding-right: 10px;">
+                            <strong>Email</strong>
                         </td>
-                        <td style="width: 40%;">
-                            <input class="input" type="text" name="email" id="email" size="40" maxlength="40" placeholder="Enter email" autocomplete="off">
+                        <td class="input-cell" style="text-align: left; width: 50%;">
+                            <input class="input rounded-input" type="text" name="email" id="email" size="40" maxlength="40" placeholder="Enter email" autocomplete="off" style="width: calc(100% - 20px); margin-bottom: 25px;">
                         </td>
-                        <td style="width: 30%;"></td>
+                        <td></td>
                     </tr>
-                    <tr style="height: 60px;">
-                        <td style="width: 30%; text-align: right; padding-right: 10px;">
-                            <label>Password</label>
+                    <tr class="form-row" style="text-align: center; margin-bottom: 20px;"> 
+                        <td class="label-cell" style="width: 30%; text-align: right; vertical-align: top; padding-right: 10px;">
+                            <strong>Password</strong>
                         </td>
-                        <td style="width: 40%;">
-                            <input class="input" type="password" name="password" id="password" size="40" maxlength="40" placeholder="Enter password" autocomplete="off">
+                        <td class="input-cell" style="text-align: left; width: 50%;">
+                            <input class="input rounded-input" type="password" name="password" id="password" size="40" maxlength="40" placeholder="Enter password" autocomplete="off" style="width: calc(100% - 20px); margin-bottom: 10px;">
+                            <br>
                             <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
+                            <br> 
                         </td>
-                        <td style="width: 30%;"></td>
+                        <td></td>
                     </tr>
-                    <tr style="height: 50px;">
+                    <tr class="form-row error-message-cell">
                         <td colspan="3" id="errMsg" style="color: #EB0A1E; text-align: center; font-size: larger;"></td>
                     </tr>
-                    <tr style="height: 60px;">
-                        <td colspan="3">
+                    <tr class="form-row">
+                        <td colspan="3" style="text-align: center;">
+                            <div class="space-after-checkbox"></div>
                             <input class="sm-button highlight" type="submit" value="Login">
                         </td>
                     </tr>
@@ -85,6 +90,8 @@
                     </tr>
                 </table>
             </form>
+            
+                           
         <!--Script to toggle vis of password (used skynet to get code)-->
             <script>
                 function togglePasswordVisibility() {
