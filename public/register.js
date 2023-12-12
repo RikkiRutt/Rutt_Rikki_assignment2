@@ -9,7 +9,7 @@ window.onload = function () {
     register_form.elements['email'].value = params.get('email');
 
     //get err msg and dispay
-    for (let i = 0; i <= document.getElementsByClassName('form-group').length; i++) {
+    for (let i = 0; i <= document.forms['register_form'].elements.length; i++) {
         let inputName = register_form.elements[i].name;
 
         if (params.has(`${inputName}_length`)) {

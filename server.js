@@ -205,54 +205,62 @@ delete temp_user['name'];
 //same function as temp_user
 let registration_errors = {};
 
-app.post ('/process_register', function(request, response) {
-
-    //get inputs from reg form
+app.post('/process_register', function (request, response) {
+    console.log(request.body);//check rece data
+    // get inputs from reg form
     let reg_name = request.body.name;
     let reg_email = request.body.email.toLowerCase();
     let reg_password = request.body.password;
     let reg_confirm_password = request.body.confirm_password;
 
-    //matches pw and confrim pw
+    // matches pw and confrim pw
     validateConfirmPassword(reg_confirm_password, reg_password);
 
-    //response from server to ck if no err
-    if (Object.keys(registration_errors).length ==0) {
-
-        //creating new objest in the user_data obj
+    // response from server to ck if no err
+    if (Object.keys(registration_errors).length == 0) {
+        // creating new object in the user_data object
         user_data[reg_email] = {};
         user_data[reg_email].name = reg_name;
         user_data[reg_email].password = reg_password;
 
-        //async writing new user_data to proper files
-        fs.writeFile(__dirname + '/user_data.json', JSON.stringify(user_data) `utf-8`, (err) => {
+        // async writing new user_data to proper files
+        fs.writeFile(__dirname + '/user_data.json', JSON.stringify(user_data), 'utf-8', (err) => {
             if (err) {
                 console.error('Error updating user data:', err);
+                response.status(500).send('Internal Server Error');
             } else {
                 console.log('User data has been updated!');
-            
-            //add user info to temp
-            temp_user['name'] = reg_name;
-            temp_user['email'] = reg_email;
 
-            //con log ck
-            console.log(temp_user);
-            console.log(user_data);
+                // add user info to temp
+                temp_user['name'] = reg_name;
+                temp_user['email'] = reg_email;
 
-            let params = new URLSearchParams(temp_user);
-            response.redirect(`/invoice.html?regSuccess&valid&${params.toString()}`);
+                // con log ck
+                console.log(temp_user);
+                console.log(user_data);
+
+                let params = new URLSearchParams(temp_user);
+                response.redirect(`/invoice.html?regSuccess&valid&${params.toString()}`);
             }
         });
-    } else //if err from vlad and stor in reg_err
-    {
+    } else {
+        // if err from vlad and store in reg_err
         delete request.body.password;
         delete request.body.confirm_password;
-
+    
         let params = new URLSearchParams(request.body);
-        response.redirect(`/register.html?${params.toString()}&${qs.stringify(registration_errors)}`);
+    
+        // Add registration_errors to the query parameters
+        params.append('name_error', registration_errors['name_type']);
+        params.append('email_error', registration_errors['email_type']);
+        params.append('password_error', registration_errors['password_type']);
+        params.append('confirm_password_error', registration_errors['confirm_password_type']);
+    
+        response.redirect(`/register.html?${params.toString()}`);
     }
+    
+});
 
-})
 
 function validateName(name) {
     // Clear previous errors
@@ -268,9 +276,38 @@ function validateName(name) {
         registration_errors['name_type'] = 'Full name should only contain letters.';
     }
 
+    // Check if name is already in use
+    if (Object.values(user_data).some(user => user.name === name)) {
+        registration_errors['name_type'] = 'Name is already in use.';
+    }
+
     // If there are no errors, the full name is valid
     console.log(registration_errors);
 }
+
+function validateEmail(email) {
+    // Clear previous errors
+    delete registration_errors['email_type'];
+
+    // Check for the email format using a regular expression
+    const emailRegex = /^[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+
+    if (!emailRegex.test(email)) {
+        registration_errors['email_type'] = 'Invalid email format.';
+    }
+
+    // Convert the email to lowercase for case-insensitive comparison
+    const lowercaseEmail = email.toLowerCase();
+
+    // Check if email is already in use
+    if (user_data[lowercaseEmail]) {
+        registration_errors['email_type'] = 'Email address is already in use.';
+    }
+
+    // If there are no errors, the email is valid
+    console.log(registration_errors);
+}
+
 
 function validatePassword(password) {
     // Clear previous errors
