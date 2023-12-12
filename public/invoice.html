@@ -1,91 +1,61 @@
 <!DOCTYPE html>
 <!--Template from startbootstrap.com code used from sal and bing chat gpt-->
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Rik's Car Parts Store-Invoice</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Rik's Car Parts Store-Invoice</title>
 
-    <!-- load product information-->
-    <script src="./products.js"></script>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-
-    <!-- Add CSS for the pop-up animation -->
-    <style>
-        /* Pop-up container style */
-        #popupContainer {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotateX(360deg); /* Initial rotation */
-            padding: 20px;
-            background-color: #EB0A1E; /* Red background */
-            color: #fff; /* White text */
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            animation: popUpAnimation 0.5s ease-in-out; /* Animation */
-            font-size: 1.2em; /* Larger font size */
-        }
-
-        /* Pop-up animation */
-        @keyframes popUpAnimation {
-            0% { transform: translate(-50%, -50%) rotateX(360deg); opacity: 0; }
-            50% { transform: translate(-50%, -50%) rotateX(180deg); opacity: 0.5; }
-            100% { transform: translate(-50%, -50%) rotateX(0deg); opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <span class="navbar-brand" href="#!">Rik's Parts Store</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                   <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="product_display.html">Shop</a></li>-->
-                </ul>
-                <form class="d-flex">
-                    <!-- <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i> 
-                        Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button> -->
-                </form>
+        <!-- load product information-->
+        <script src="./products.js"></script>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <span class="navbar-brand" href="#!">Rik's Parts Store</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                       <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product_display.html">Shop</a></li>-->
+                    </ul>
+                    <form class="d-flex">
+                        <!-- <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i> 
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button> -->
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Header -->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Fix Your Vehicle</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With all your basic automotive parts needs</p>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Fix Your Vehicle</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">With all your basic automotive parts needs</p>
+                </div>
             </div>
-        </div>
-    </header>
-
-    <br>
-    <br>
-    <h5 id="helloMsg" class="text-center" style="color: #EB0A1E; font-size: x-large;"></h5>
-
-    <div class="container">
+        </header>
+        <br>
+        <br>
+        <h5 id="helloMsg" class="text-center" style="color: #EB0A1E; font-size: x-large;"></h5>
+       <div class="container">
         <br>
         <br>
 
-        <!-- Table for invoice -->
+        <!-- table for invoice-->
         <table class="table">
-            <thead>
                 <tr>
                     <th colspan="2">Item</th>
                     <th>Quantity Purchased</th>
@@ -97,62 +67,35 @@
             <tbody id="invoice_table"></tbody>
             <tbody id="total_display"></tbody>
         </table>
-
         <br>
-
         <div class="buttons-container">
-            <form name="invoice" method="POST" id="invoiceForm">
-                <input class="sm-button highlight" type="button" value="Continue Shopping" name="continue" onclick="continueShopping()">
+            <form name="invoice" method="POST">
+                <input class="sm-button highlight" type="submit" value="Continue Shopping" name="continue" onclick="invoice.action='/continue_shopping'">
                 <br>
-                <input class="sm-button highlight" type="button" value="Complete Purchase" name="logout" onclick="showPopup()">
+                <input class="sm-button highlight" type="submit" value="Complete Purchase" name="logout" onclick="invoice.action='/purchase_logout'">
             </form>
         </div>
-    </div>
-
-    <!-- Pop-up container -->
-    <div id="popupContainer">
-        <p id="popupMessage"></p>
-        <button onclick="closePopup()">OK</button>
-    </div>
-
-    <script>
-        function continueShopping() {
-            // Redirect to the desired URL
-            window.location.href = '/continue_shopping';
-        }
-
+        <br>
+       </div>
+       <script>
         function showPopup() {
             // Display custom pop-up message with the user's name only for the "Complete Purchase" button
             let userName = document.getElementById('helloMsg').innerText;
-            let popupMessage = `Thank you, ${userName}, for your purchase. You are now being logged out. We appreciate your business and hope you return soon!`;
+            let confirmationMessage = `Thank you, ${userName}, for your purchase. You are now being loged out. We appreciate your business and hope you return soon!`;
 
-            // Set the message in the popup
-            document.getElementById('popupMessage').innerText = popupMessage;
-
-            // Show the popup
-            document.getElementById('popupContainer').style.display = 'block';
-        }
-
-        function closePopup() {
-            // Hide the popup when the user clicks "OK"
-            document.getElementById('popupContainer').style.display = 'none';
-
-            // Submit the form
-            document.getElementById('invoiceForm').submit();
+            if (confirm(confirmationMessage)) {
+                // If the user clicks "OK" in the confirmation dialog, submit the form
+                document.getElementById('invoiceForm').submit();
+            }
         }
     </script>
-
-    <!-- js file for invoice -->
-    <script src="./invoice.js"></script>
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rikki Rutt 2023</p></div>
-    </footer>
-
-    <!-- Bootstrap core JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+       <!--js file for invocie-->
+       <script src="./invoice.js"></script>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rikki Rutt 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
-
-
