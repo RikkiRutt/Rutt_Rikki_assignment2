@@ -254,6 +254,44 @@ app.post ('/process_register', function(request, response) {
 
 })
 
+function validatePassword(password) {
+    // Clear previous errors
+    delete registration_errors['password_type'];
+
+    // Check for minimum and maximum length
+    if (password.length < 10 || password.length > 16) {
+        registration_errors['password_type'] = 'Password must be between 10 and 16 characters.';
+    }
+
+    // Check for spaces
+    if (password.includes(' ')) {
+        registration_errors['password_type'] = 'Password cannot contain spaces.';
+    }
+
+    // Check for at least one uppercase letter
+    if (!/[A-Z]/.test(password)) {
+        registration_errors['password_type'] = 'Password must contain at least one uppercase letter.';
+    }
+
+    // Check for at least one lowercase letter
+    if (!/[a-z]/.test(password)) {
+        registration_errors['password_type'] = 'Password must contain at least one lowercase letter.';
+    }
+
+    // Check for at least one digit
+    if (!/\d/.test(password)) {
+        registration_errors['password_type'] = 'Password must contain at least one digit.';
+    }
+
+    // Check for at least one non-letter and non-digit character
+    if (!/\W/.test(password)) {
+            registration_errors['password_type'] = 'Password must contain at least one non-letter and non-digit character.';
+    }
+
+    // If there are no errors, the password is valid
+    console.log(registration_errors);
+}
+
 function validateConfirmPassword(confirm_password, password) {
     delete registration_errors['confirm_password_type'];
 
@@ -263,7 +301,6 @@ function validateConfirmPassword(confirm_password, password) {
         registration_errors['confirm_password_type'] = 'Passwords do not match.';
     }
 }
-
 
 // Start the server; listen on port 8080 for incoming HTTP requests
 server.listen(8080, () => console.log(`listening on port 8080`));
