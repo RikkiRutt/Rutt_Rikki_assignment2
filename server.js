@@ -213,6 +213,9 @@ app.post('/process_register', function (request, response) {
     let reg_password = request.body.password;
     let reg_confirm_password = request.body.confirm_password;
 
+    validateName(reg_name)
+    validateEmail(reg_email)
+    validatePassword(reg_password)
     // matches pw and confrim pw
     validateConfirmPassword(reg_confirm_password, reg_password);
 
@@ -227,7 +230,6 @@ app.post('/process_register', function (request, response) {
         fs.writeFile(__dirname + '/user_data.json', JSON.stringify(user_data), 'utf-8', (err) => {
             if (err) {
                 console.error('Error updating user data:', err);
-                response.status(500).send('Internal Server Error');
             } else {
                 console.log('User data has been updated!');
 
@@ -248,15 +250,8 @@ app.post('/process_register', function (request, response) {
         delete request.body.password;
         delete request.body.confirm_password;
     
-        let params = new URLSearchParams(request.body);
-    
-        // Add registration_errors to the query parameters
-        params.append('name_error', registration_errors['name_type']);
-        params.append('email_error', registration_errors['email_type']);
-        params.append('password_error', registration_errors['password_type']);
-        params.append('confirm_password_error', registration_errors['confirm_password_type']);
-    
-        response.redirect(`/register.html?${params.toString()}`);
+        let params = new URLSearchParams(request.body);    
+        response.redirect(`/register.html?${params.toString()}&${qs.stringify(registration_errors)}`);
     }
     
 });
@@ -275,16 +270,11 @@ function validateName(name) {
     if (!/^[A-Za-z]+$/.test(name)) {
         registration_errors['name_type'] = 'Full name should only contain letters.';
     }
-
     // Check if name is already in use
     if (Object.values(user_data).some(user => user.name === name)) {
         registration_errors['name_type'] = 'Name is already in use.';
     }
-
-    // If there are no errors, the full name is valid
-    console.log(registration_errors);
 }
-
 function validateEmail(email) {
     // Clear previous errors
     delete registration_errors['email_type'];
@@ -314,11 +304,7 @@ function validateEmail(email) {
         registration_errors['email_type'] = 'Email address is already in use.';
     }
 
-    // If there are no errors, the email is valid
-    console.log(registration_errors);
 }
-
-
 
 function validatePassword(password) {
     // Clear previous errors
@@ -353,9 +339,6 @@ function validatePassword(password) {
     if (!/\W/.test(password)) {
             registration_errors['password_type'] = 'Password must contain at least one non-letter and non-digit character.';
     }
-
-    // If there are no errors, the password is valid
-    console.log(registration_errors);
 }
 
 function validateConfirmPassword(confirm_password, password) {
