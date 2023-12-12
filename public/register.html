@@ -46,77 +46,83 @@
         </header>
         <br>
         <!--Used chat to adjust style-->
-<div class="container">
-    <h1 style="text-align: center;">Please Register a new account.</h1>
-    <form action="/process_register" method="POST" name="register_form">
-        <table class="form-table" style="margin: auto;">
-            <tr class="form-row" style="height: 60px;"> 
-                <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
-                    <strong>Name</strong>
-                </td>
-                <td class="input-cell" style="width: 40%;">
-                    <input class="input rounded-input" type="text" name="name" id="name" size="40" placeholder="Letters only" autocomplete="off" maxlength="40">
-                </td>
-                <td style="width: 30%;"></td>
-            </tr>
-            <tr class="error-message-cell">
-                <td colspan="3" id="name_error" style="color: #EB0A1E;"></td>
-            </tr>
-    
-            <tr class="form-row" style="height: 60px;"> 
-                <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
-                    <strong>Email Address</strong>
-                </td>
-                <td class="input-cell" style="width: 40%;">
-                    <input class="input rounded-input" type="text" name="email" id="email" size="40" placeholder="Valid email address" autocomplete="off" maxlength="40">
-                </td>
-                <td style="width: 30%;"></td>
-            </tr>
-            <tr class="error-message-cell">
-                <td colspan="3" id="email_error" style="color: #EB0A1E;"></td>
-            </tr>
-    
-            <tr class="form-row" style="height: 60px;"> 
-                <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
-                    <strong>Password</strong>
-                </td>
-                <td class="input-cell" style="width: 40%;">
-                    <input class="input rounded-input" type="password" name="password" id="password" size="40" placeholder="Enter password" autocomplete="off" maxlength="40">
-                    <input type="checkbox" onclick="togglePasswordVisibility()" style="margin-left: 10px;"> Show Password
-                </td>
-                <td style="width: 30%;"></td>
-            </tr>
-            <tr class="error-message-cell">
-                <td colspan="3" id="password" style="color: #EB0A1E;"></td>
-            </tr>
-    
-            <tr class="form-row" style="height: 60px;"> 
-                <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
-                    <strong>Confirm Password</strong>
-                </td>
-                <td class="input-cell" style="width: 40%;">
-                    <input class="input rounded-input" type="password" name="confirm_password" id="confirm_password" size="40" placeholder="Re-enter password" autocomplete="off" maxlength="40">
-                </td>
-                <td style="width: 30%;"></td>
-            </tr>
-            <tr class="error-message-cell">
-                <td colspan="3" id="confirm_password_error" style="color: #EB0A1E;"></td>
-            </tr>
-    
-            <tr class="form-row">
-                <td colspan="3">
-                    <input class="sm-button highlight" type="submit" value="Register">
-                </td>
-            </tr>
-            <tr>
-                <!-- Redirect to login -->
-                <td colspan="3" style="text-align: center; font-size: larger;">
-                    Have an existing account? <a href="/login.html" class="link" style="text-decoration: underline;">Login here</a>
-                </td>
-            </tr>
-        </table>
-    </form>
-    
+        <div class="container">
+            <h1 style="text-align: center;">Please Register a new account.</h1>
+            <form action="/process_register" method="POST" name="register_form">
+                <table class="form-table" style="margin: auto;">
+                    <tr class="form-row" style="height: 60px;"> 
+                        <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
+                            <strong>Name</strong>
+                        </td>
+                        <td class="input-cell" style="width: 40%;">
+                            <input class="input rounded-input" type="text" name="name" id="name" size="40" placeholder="Letters only" autocomplete="off" maxlength="40">
+                        </td>
+                        <td style="width: 30%;"></td>
+                    </tr>
+                    <tr class="error-message-cell">
+                        <td colspan="3" id="name_error" style="color: #EB0A1E;"></td>
+                    </tr>
+            
+                    <tr class="form-row" style="height: 60px;"> 
+                        <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
+                            <strong>Email Address</strong>
+                        </td>
+                        <td class="input-cell" style="width: 40%;">
+                            <input class="input rounded-input" type="text" name="email" id="email" size="40" placeholder="Valid email address" autocomplete="off" maxlength="40">
+                        </td>
+                        <td style="width: 30%;"></td>
+                    </tr>
+                    <tr class="error-message-cell">
+                        <td colspan="3" id="email_error" style="color: #EB0A1E;"></td>
+                    </tr>
+            
+                    <tr class="form-row" style="height: 60px;"> 
+                        <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
+                            <strong>Password</strong>
+                        </td>
+                        <td class="input-cell" style="width: 40%;">
+                            <input class="input rounded-input" type="password" name="password" id="password" size="40" placeholder="Enter password" autocomplete="off" maxlength="40">
+                            <input type="checkbox" onclick="togglePasswordVisibility()" style="margin-left: 10px;"> Show Password
+                        </td>
+                        <td style="width: 30%;"></td>
+                    </tr>
+                    <tr class="error-message-cell">
+                        <td colspan="3" id="password_requirements" style="color: #EB0A1E;"></td>
+                    </tr>
+            
+                    <tr class="form-row" style="height: 60px;"> 
+                        <td class="label-cell" style="width: 30%; text-align: right; padding-right: 10px;">
+                            <strong>Confirm Password</strong>
+                        </td>
+                        <td class="input-cell" style="width: 40%;">
+                            <input class="input rounded-input" type="password" name="confirm_password" id="confirm_password" size="40" placeholder="Re-enter password" autocomplete="off" maxlength="40">
+                        </td>
+                        <td style="width: 30%;"></td>
+                    </tr>
+                    <tr class="error-message-cell">
+                        <td colspan="3" id="confirm_password_error" style="color: #EB0A1E;"></td>
+                    </tr>
+            
+                    <tr class="form-row">
+                        <td colspan="3" style="text-align: center; color: #000000; font-size: large;">
+                            Password must be between 10 to 16 characters long. It must also contain one upper case letter, lower case letter, number, and symbol (no spaces).
+                        </td>
+                    </tr>
+            
+                    <tr class="form-row">
+                        <td colspan="3">
+                            <input class="sm-button highlight" type="submit" value="Register">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- Redirect to login -->
+                        <td colspan="3" style="text-align: center; font-size: larger;">
+                            Have an existing account? <a href="/login.html" class="link" style="text-decoration: underline;">Login here</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            
             <!--Script to toggle vis of password (used skynet to get code)-->
             <script>
                 function togglePasswordVisibility() {
@@ -124,9 +130,9 @@
                     passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
                 }
             </script>
-</div>
-<br>
-<script src="./register.js"></script>
+        </div>
+        <br>
+        <script src="./register.js"></script>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rikki Rutt 2023</p></div>
