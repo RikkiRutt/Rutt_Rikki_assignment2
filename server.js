@@ -216,7 +216,7 @@ app.post ('/process_register', function(request, response) {
     //matches pw and confrim pw
     validateConfirmPassword(reg_confirm_password, reg_password);
 
-    //response from server
+    //response from server to ck if no err
     if (Object.keys(registration_errors).length ==0) {
 
         //creating new objest in the user_data obj
@@ -242,7 +242,7 @@ app.post ('/process_register', function(request, response) {
             let params = new URLSearchParams(temp_user);
             response.redirect(`/invoice.html?regSuccess&valid&${params.toString()}`);
             }
-        })
+        });
     }
 
 })
