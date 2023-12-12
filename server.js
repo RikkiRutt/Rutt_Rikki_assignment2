@@ -202,6 +202,61 @@ delete temp_user['name'];
     response.redirect('/product_display.html');
 })
 
+//same function as temp_user
+let registration_errors = {};
+
+app.post ('/process_register', function(request, response) {
+
+    //get inputs from reg form
+    let reg_name = request.body.name;
+    let reg_email = request.body.email.toLowerCase();
+    let reg_password = request.body.password;
+    let reg_confirm_password = request.body.confirm_password;
+
+    //matches pw and confrim pw
+    validateConfirmPassword(reg_confirm_password, reg_password);
+
+    //response from server
+    if (Object.keys(registration_errors).length ==0) {
+
+        //creating new objest in the user_data obj
+        user_data[reg_email] = {};
+        user_data[reg_email].name = reg_name;
+        user_data[reg_email].password = reg_password;
+
+        //async writing new user_data to proper files
+        fs.writeFile(__dirname + '/user_data.json', JSON.stringify(user_data) `utf-8`, (err) => {
+            if (err) {
+                console.error('Error updating user data:', err);
+            } else {
+                console.log('User data has been updated!');
+            
+            //add user info to temp
+            temp_user['name'] = reg_name;
+            temp_user['email'] = reg_email;
+
+            //con log ck
+            console.log(temp_user);
+            console.log(user_data);
+
+            let params = new URLSearchParams(temp_user);
+            response.redirect(`/invoice.html?regSuccess&valid&${params.toString()}`);
+            }
+        })
+    }
+
+})
+
+function validateConfirmPassword(confirm_password, password) {
+    delete registration_errors['confirm_password_type'];
+
+    console.log(registration_errors);
+
+    if (confirm_password !== password) {
+        registration_errors['confirm_password_type'] = 'Passwords do not match.';
+    }
+}
+
 
 // Start the server; listen on port 8080 for incoming HTTP requests
 server.listen(8080, () => console.log(`listening on port 8080`));
